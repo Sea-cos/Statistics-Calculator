@@ -34,6 +34,13 @@ const getRange = (array) => {
     return Math.max(...array) - Math.min(...array);
 }
 
+const getVariance = (array) => {
+    const mean = getMean(array);
+    const variance = array.reduce((acc, el) => {
+        return acc + Math.pow(el - mean, 2) / array.length
+    })
+}
+
 
 
 const calculate = () => {
@@ -44,9 +51,11 @@ const calculate = () => {
     const median = getMedian(numbers);
     const mode = getMode(numbers);
     const range = getRange(numbers);
+    const variance = getVariance(numbers);
     
     document.querySelector("#mean").textContent = mean;
     document.querySelector("#median").textContent = median;
     document.querySelector("#mode").textContent = mode;
     document.querySelectot("#range").textContent = range;
+    document.querySelector("#variance").textContent = variance;
 }
